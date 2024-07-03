@@ -82,30 +82,52 @@ body {
   border-radius: 40px;
 }
 .card p {
-  width: 75%;
-  height: 3rem;
-  border-radius: 0.5rem;
-  background-color: #797979;
-  color: #000;
+  width: 65%;
+  height: 2.5rem;
+  border-radius: 1rem;
+  background-color: #030c1a;
+  color: #ffffff;
   text-align: center;
   padding: 0.8rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 500;
+  cursor: pointer;
+}
+.ticket {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
+
 span {
-  width: 40px;
-  height: 40px;
-  font-size: 22px;
-  color: #555;
-  line-height: 40px;
-  text-align: center;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
+  cursor: pointer;
 }
+
 span:hover {
   background: #a0a0a0;
 }
+span:active {
+  background: #fff;
+}
+
 .checked {
   text-decoration: line-through;
+}
+.nav {
+  position: fixed;
+  bottom: 0;
+  background-color: #000;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  width: 100%;
+  height: 30px;
+  margin: 0;
+  padding: 5px;
 }

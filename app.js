@@ -12,33 +12,54 @@ const addTask = (event) => {
     const ticket = createTicket(userInput);
     currentForm.reset();
     saveData();
+    console.log("addtask bhi chalraha hai");
   }
 };
 const form = formData;
 form.addEventListener("submit", addTask);
 
 const createTicket = (value) => {
+  // const newtask = document.createElement("p");
+  // const newText = document.createTextNode(value);
+  // newtask.appendChild(newText);
+  // const span = document.createElement("span");
+  // span.classList.add("icon");
+  // const icon = document.createElement("i");
+  // icon.classList.add("fa-solid", "fa-x");
+  // span.appendChild(icon);
+  // newtask.appendChild(span);
+  // Task.appendChild(newtask);
+  const newDiv = document.createElement("div");
   const newtask = document.createElement("p");
   const newText = document.createTextNode(value);
-  newtask.appendChild(newText);
-  const span = document.createElement("span");
-  span.classList.add("icon");
+  const newSpan = document.createElement("span");
   const icon = document.createElement("i");
   icon.classList.add("fa-solid", "fa-x");
-  span.appendChild(icon);
-  newtask.appendChild(span);
-  Task.appendChild(newtask);
+  newSpan.appendChild(icon);
+  // const newImg = document.createElement("img");
+  // newImg.setAttribute("src", "./images/ximage.jpg");
+  // newSpan.appendChild(newImg);
+  newDiv.classList.add("ticket");
+  newtask.appendChild(newText);
+  newDiv.appendChild(newtask);
+  newDiv.appendChild(newSpan);
+  Task.appendChild(newDiv);
+  console.log("addticket working");
 };
-
-Task.addEventListener("click", function (e) {
-  // Check if the clicked element has the class "fa-times" (delete icon)
-  if (e.target.classList.contains("fa-times")) {
-    // Remove the parent <p> element of the clicked icon
-    e.target.parentElement.parentElement.remove(); // Assuming structure is <p> -> <span> -> <i>
-    saveData(); // Save updated task list to localStorage after removal
+const removeTicket = (e) => {
+  if (e.target.tagName === "I") {
+    e.target.parentElement.parentElement.remove();
+    saveData();
+    console.log("removeticket working");
+  } else if (e.target.tagName === "SPAN") {
+    e.target.parentElement.remove();
+    saveData();
+  } else if (e.target.tagName === "P") {
+    e.target.classList.toggle("checked");
+    saveData();
   }
-});
-
+};
+Task.addEventListener("click", removeTicket);
 function saveData() {
   localStorage.setItem("data", Task.innerHTML);
 }
